@@ -3,23 +3,23 @@ names = []
 company_performance = []
 company_potential = []
 auto_performance = []
-auto_potetial = []
+auto_potential = []
 
 #funcion para agregar empleados, y califiquen su performance y su potencial de crecimiento.
 def add_empoyed() :
-    employed = input("ingrese su nombre y apellido: ")
+    employed = input("Ingrese su nombre y apellido: ")
     while employed == "" :
-        employed = input("ingrese su nombre y apellido: ")
-    performance = int(input("ingrese su perfomance dentro de la empresa: "))
+        employed = input("Ingrese su nombre y apellido: ")
+    performance = int(input("Ingrese su perfomance dentro de la empresa: "))
     while performance < 1 or performance > 5:
-        performance = int(input("ingrese su perfomance dentro de la empresa: "))
-    potential = int(input("ingrese su potencial de crecimiento dentro de la empresa: "))
+        performance = int(input("Ingrese su perfomance dentro de la empresa: "))
+    potential = int(input("Ingrese su potencial de crecimiento dentro de la empresa: "))
     while potential < 1 or potential > 5:
-        potential = int(input("ingrese su potencial de crecimiento dentro de la empresa: "))
+        potential = int(input("Ingrese su potencial de crecimiento dentro de la empresa: "))
 
     names.append(employed)
     auto_performance.append(performance)
-    auto_potetial.append(potential)
+    auto_potential.append(potential)
 
     print(f"{employed}, agregado correctamente")
 
@@ -30,27 +30,32 @@ def shows_employed():
     else:
         print("Empleados cargados:")
         for i in range(len(names)):
-            print(f"{i+1}. {names[i]} | Performance: {auto_performance[i]}, Potencial: {auto_potetial[i]}")
+            print(f"{i+1}. {names[i]} | Performance: {auto_performance[i]}, Potencial: {auto_potential[i]}")
         print()
 
 # funcion main que sirve como "menu" para que ul usario elija que desea realizar.
 def main():
-    run = int(input("desea correr el programa? (si, precione 1. no, precione cualquier numero) "))
-    while run == 1:
-        print("opcion 1 cargar resultados")
-        print("opcion 2 agregar empleado")
-        print("opcion 3, salir")
+    run = int(input("Desea correr el programa? (si, precione 1. no, precione -1) "))
+    while run != -1:
+        if run == 1:
+            print("Opcion 1 cargar resultados")
+            print("Opcion 2 agregar empleado")
+            print("Opcion 3, salir")
 
-        option = int(input("ingrese una opcion: "))
-        if option == 1:
-            shows_employed()
-        elif option == 2:
-            add_empoyed()
-        elif option == 3:
-            print("fin del programa")
-            break
+            option = int(input("Ingrese una opcion: "))
+            if option == 1:
+                shows_employed()
+            elif option == 2:
+                add_empoyed()
+            elif option == 3:
+                print("Fin del programa")
+                break
+            else:
+                print("Opcion invalida")
         else:
-            print("opcion invalida")
+            print("Opcion invalida")
+            run = int(input("Desea correr el programa? (si, precione 1. no, precione -1) "))
+
 
 #ejecuta la funcion.
 main()
