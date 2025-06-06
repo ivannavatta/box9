@@ -6,7 +6,7 @@ auto_performance = []
 auto_potential = []
 
 #funcion para agregar empleados, y califiquen su performance y su potencial de crecimiento.
-def add_empoyed() :
+def add_employed() :
     employed = input("Ingrese su nombre y apellido: ")
     while employed == "" :
         employed = input("Ingrese su nombre y apellido: ")
@@ -75,31 +75,51 @@ def update_data():
             return
     print("Empleado no encontrado")
 
+def best_employee():
+    if names == []:
+        print("No hay empleados cargados.")
+        return
+    else :
+        best_score=  -1
+        best_employee = ""
+        print("Mejor empleado:")
+        for i in range(len(names)):
+            score= auto_performance[i] * auto_potential[i]
+            print(f"{names[i]} | Auto-Performance: {auto_performance[i]}, Auto-Potencial: {auto_potential[i]}, Puntaje: {score}")
+            if score > best_score:
+                best_score = score
+                best_employee = names[i]
+
+    print(f"El mejor empleado es: {best_employee} con un puntaje de {best_score}")        
 # funcion main que sirve como "menu" para que el usario elija que desea realizar.
 def main():
-    run = int(input("Desea correr el programa? (si, precione 1. no, precione -1): "))
+    run = int(input("Desea correr el programa? (si, presione 1. no, presione -1): "))
     while run != -1:
         if run == 1:
             print("Opcion 1, cargar resultados")
             print("Opcion 2, agregar empleado")
             print("Opcion 3, actualizar datos")
-            print("Opcion 4, salir")
+            print("Opcion 4, mejor empleado")
+            print("Opcion 5, salir")
 
             option = int(input("Ingrese una opcion: "))
             if option == 1:
                 shows_employed()
             elif option == 2:
-                add_empoyed()
+                add_employed()
             elif option == 3:
                 update_data()
             elif option == 4:
+                best_employee()
+            elif option == 5:  
                 print("Fin del programa")
                 break
             else:
                 print("Opcion invalida")
         else:
             print("Opcion invalida")
-            run = int(input("Desea correr el programa? (si, precione 1. no, precione -1): "))
+            run = int(input("Desea correr el programa? (si, presione 1. no, presione -1): "))
+
 
 
 #ejecuta la funcion.
